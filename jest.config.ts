@@ -22,7 +22,7 @@ const config: Config.InitialOptions = {
   },
   coverageReporters: ['text-summary', 'lcov'],
   moduleNameMapper: {
-    '@chat/(.*)': ['<rootDir>/src/$1']
+    '@order/(.*)': ['<rootDir>/src/$1']
   }
 };
 

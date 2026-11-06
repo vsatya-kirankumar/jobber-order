@@ -3,18 +3,18 @@ import { winstonLogger } from '@vsatya-kirankumar/jobber-shared';
 import amqp, { Channel, ChannelModel } from 'amqplib';
 import { Logger } from 'winston';
 
-const log: Logger = winstonLogger(`${config.ELASTIC_SEARCH_URL}`, 'orderQueueConnection', 'debug');
+const log: Logger = winstonLogger(`${config.ELASTIC_SEARCH_URL}`, 'reviewQueueConnection', 'debug');
 
 export const createRabbitMQConnection = async (): Promise<Channel | undefined> => {
   try {
     const connection: ChannelModel = await amqp.connect(`${config.RABBITMQ_ENDPOINT}`);
     const channel: Channel = await connection.createChannel();
-    log.info('Order server connected to queue successfully...');
+    log.info('Review server connected to queue successfully...');
     closeConnection(channel, connection);
 
     return channel;
   } catch (error) {
-    log.log('error', 'Order Service createRabbitMQConnection() method error.', error);
+    log.log('error', 'Review Service createRabbitMQConnection() method error.', error);
     return undefined;
   }
 };
